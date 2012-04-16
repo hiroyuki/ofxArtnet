@@ -183,7 +183,6 @@ static void add_iface_if_needed(iface_t **head, iface_t **tail,
   if (!(ifa->ifa_flags & IFF_UP)) return;
   if (ifa->ifa_flags & IFF_LOOPBACK) return;
   if (ifa->ifa_addr->sa_family != AF_INET) return;
-    printf("enable\n");
   iface_t *iface = new_iface(head, tail);
   struct sockaddr_in *sin = (struct sockaddr_in*) ifa->ifa_addr;
   iface->ip_addr.sin_addr = sin->sin_addr;
@@ -311,7 +310,7 @@ int artnet_net_init(node n, const char *preferred_ip) {
       }
     }
     if (!found) {
-      artnet_error("Cannot find ip %s", preferred_ip);
+      artnet_error("Cannot find interface by ip %s", preferred_ip);
       ret = ARTNET_ENET;
       goto e_cleanup;
     }

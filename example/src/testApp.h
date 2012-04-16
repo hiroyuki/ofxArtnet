@@ -20,5 +20,6 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-    ofxArtnet artnet;
+        ofxArtnet artnet;
+        ofImage testImage;
 };

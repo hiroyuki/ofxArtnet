@@ -11,86 +11,61 @@
 #include <artnet.h>
 #include "ofMain.h"
 
-typedef struct {
-    int verbose;
-    int help;
-    char *ip_addr;
-    int port_addr;
-    int channel;
-    int value;
-    float fade_time;
-} opts_t;
+#define _TIMEOUT 2000
 
 
-class ofxArtnet 
+enum status_artnet { NOT_READY, 
+                    NODES_FINDING,
+                    NODES_FOUND
+};
+
+
+class ofxArtnet : public ofThread
 {
 public:
     static int nodes_found;
     string SHORT_NAME;
     string LONG_NAME;
+    static status_artnet status;
+    int find_timeout, sd;
+    
+    artnet_node node;
     
     ofxArtnet()
     {
         nodes_found = 0;
+        status = NOT_READY;
         SHORT_NAME = "ArtNet Node";
         LONG_NAME = "libartnet setdmx example";
     }
     
-    void test();
-    
-    int do_fade(artnet_node node, opts_t *ops);
-    
-    
-    //--------------------------------------------
-    /*
-     * Set our default options, command line args will overide this
-     */
-    void init_ops(opts_t *ops) {
-        ops->verbose = 1;
-        ops->help = 0;
-        ops->ip_addr = "192.168.0.101";
-        ops->port_addr = 0;
-        ops->channel = 1;
-        ops->value = 254;
-        ops->fade_time = 2.0;
+    ~ofxArtnet()
+    {
+        //stopThread();
     }
     
-    void display_help_and_exit(opts_t *ops) {
-        printf(
-               "Usage: --address <ip_address> --port <port_no> --channel <channel> --dmx <dmx_value> --fade <fade_time> \n"
-               "\n"
-               "Control lla port <-> universe mappings.\n"
-               "\n"
-               "  -a, --address <ip_address>      Address to send from.\n"
-               "  -c, --channel <channel>         Channel to set (starts from 0).\n"
-               "  -d, --dmx <value>               Value to set the channel to.\n"
-               "  -h, --help                      Display this help message and exit.\n"
-               "  -f, --fade <fade_time>          Total time of fade.\n"
-               "  -p, --port <port_no>            Universe (port) address.\n"
-               "  -v, --verbose                   Be verbose.\n"
-               "\n" );
-        exit(0);
-    }
+    void setup(const char* ip_addr, int port_addr = 0, int verbose = 0);
+    void threadedFunction();
+    void sendDmx( string ip, const unsigned char* data512 );
+
     
     private:
     int static reply_handler(artnet_node n, void *pp, void *d) {
+        status = NODES_FOUND;
         artnet_node_list nl = artnet_get_nl(n);
-        
-//        node nd = (node)n;
-        
-//        if (ofxArtnet::nodes_found == artnet_nl_get_length(nl)) {
-//            // this is not a new node, just a previously discovered one sending
-//            // another reply
-//            return 0;
-//        } else if(ofxArtnet::nodes_found == 0) {
-//            // first node found
-//            ofxArtnet::nodes_found++;
-//            print_node_config(artnet_nl_first(nl));
-//        } else {
-//            // new node
-//            ofxArtnet::nodes_found++;
-//            print_node_config(artnet_nl_next(nl));
-//        }
+        if (ofxArtnet::nodes_found == artnet_nl_get_length(nl)) {
+            // this is not a new node, just a previously discovered one sending
+            // another reply
+            return 0;
+        } else if(ofxArtnet::nodes_found == 0) {
+            // first node found
+            ofxArtnet::nodes_found++;
+            print_node_config(artnet_nl_first(nl));
+        } else {
+            // new node
+            ofxArtnet::nodes_found++;
+            print_node_config(artnet_nl_next(nl));
+        }
         return 0;
     }
     
