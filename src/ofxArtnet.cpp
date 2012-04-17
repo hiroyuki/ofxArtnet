@@ -96,6 +96,8 @@ void ofxArtnet::sendDmx( string targetIp, const unsigned char* data512, int size
 {
     if ( status == NODES_FOUND)
     {
-        artnet_send_dmx(node, 0, targetIp.c_str(), size , data512);
+        if ( artnet_send_dmx(node, 0, targetIp.c_str(), size , data512) != ARTNET_EOK) {
+            printf("Failed to Send: %s\n", artnet_strerror() );
+        }
     }
 }

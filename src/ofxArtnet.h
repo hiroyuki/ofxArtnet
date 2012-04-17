@@ -11,7 +11,7 @@
 #include <artnet.h>
 #include "ofMain.h"
 
-#define _TIMEOUT 2000
+#define _TIMEOUT 1000
 
 
 enum status_artnet { NOT_READY, 
@@ -51,7 +51,6 @@ public:
     
     private:
     int static reply_handler(artnet_node n, void *pp, void *d) {
-        status = NODES_FOUND;
         artnet_node_list nl = artnet_get_nl(n);
         if (ofxArtnet::nodes_found == artnet_nl_get_length(nl)) {
             // this is not a new node, just a previously discovered one sending

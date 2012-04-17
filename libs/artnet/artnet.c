@@ -645,6 +645,11 @@ int artnet_send_dmx(artnet_node vn,
     {
         p.to.s_addr = inet_addr( targetIp );	
         node_entry_private_t *tmp = find_entry_from_ip(&(n->node_list), p.to);
+        if (tmp == 0 ) 
+        {
+            artnet_error("%s : %s is not found", __FUNCTION__, targetIp);
+            return ARTNET_EARG;
+        }
         p.data.admx.universe = tmp->pub.swout[ 0 ];
         artnet_net_send(n, &p);	  
     }
@@ -1513,12 +1518,18 @@ int artnet_nl_update(node_list_t *nl, artnet_packet reply) {
  */
 node_entry_private_t *find_entry_from_ip(node_list_t *nl, SI ip) {
   node_entry_private_t *tmp;
-
+    int found = 0;
   for (tmp = nl->first; tmp; tmp = tmp->next) {
     if (ip.s_addr == tmp->ip.s_addr)
+    {
+        found = 1;
       break;
+    }
   }
-  return tmp;
+    if(found == 1)
+        return tmp;
+    else
+        return 0;
 }
 
 
