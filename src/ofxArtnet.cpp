@@ -11,13 +11,13 @@ int ofxArtnet::nodes_found;
 status_artnet ofxArtnet::status;
 
 
-void ofxArtnet::setup(const char* ip_addr, int port_addr, int verbose)
+void ofxArtnet::setup(const char* interfaceIP, int port_addr, int verbose)
 {
     nodes_found = 0;
 
     // create new artnet node, and set config values
     
-    if ( (node = artnet_new(ip_addr, verbose)) == NULL) 
+    if ( (node = artnet_new(interfaceIP, verbose)) == NULL) 
     {
         printf("cannot create node: %s\n", artnet_strerror() );
         goto error_destroy;            
@@ -92,10 +92,10 @@ void ofxArtnet::threadedFunction(){
      }
 }
 
-void ofxArtnet::sendDmx( string ip, const unsigned char* data512 )
+void ofxArtnet::sendDmx( string targetIp, const unsigned char* data512, int size )
 {
     if ( status == NODES_FOUND)
     {
-        artnet_send_dmx(node, 0, ip.c_str(), sizeof(data512) / sizeof(data512[0]) , data512);
+        artnet_send_dmx(node, 0, targetIp.c_str(), size , data512);
     }
 }

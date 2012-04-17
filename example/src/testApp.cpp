@@ -8,7 +8,9 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-    artnet.sendDmx("192.168.11.53", testImage.getPixels());
+    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+    artnet.sendDmx("192.168.11.53", testImage.getPixels(), 510);
+    artnet.sendDmx("192.168.11.52", testImage.getPixels(), 510);
 }
 
 //--------------------------------------------------------------

@@ -44,9 +44,9 @@ public:
         //stopThread();
     }
     
-    void setup(const char* ip_addr, int port_addr = 0, int verbose = 0);
+    void setup(const char* interfaceIP, int port_addr = 0, int verbose = 0);
     void threadedFunction();
-    void sendDmx( string ip, const unsigned char* data512 );
+    void sendDmx( string targetIp, const unsigned char* data512, int size );
 
     
     private:
