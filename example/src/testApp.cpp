@@ -2,13 +2,15 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    //put your if ip
     artnet.setup("192.168.11.18");
     testImage.loadImage("test.png");
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2)); 
+    //list nodes for sending
     artnet.sendDmx("192.168.11.53", testImage.getPixels(), 510);
     artnet.sendDmx("192.168.11.52", testImage.getPixels(), 510);
 }
