@@ -602,6 +602,7 @@ int artnet_send_dmx(artnet_node vn,
     int ret, i;
     input_port_t *port;
     
+    printf("%d %d %d\n ", ((char*) data)[0], ((char*) data)[1], ((char*) data)[2]);
     check_nullnode(vn);
     
     if (n->state.mode != ARTNET_ON)
@@ -701,7 +702,7 @@ int artnet_raw_send_dmx(artnet_node vn,
   p.data.admx.lengthHi = short_get_high_byte(length);
   p.data.admx.length = short_get_low_byte(length);
   memcpy(&p.data.admx.data, data, length);
-
+    printf("_ %d %d %d\n ", ((char*) &p.data.admx.data)[0], ((char*) &p.data.admx.data)[1], ((char*) &p.data.admx.data)[2]);
   return artnet_net_send(n, &p);
 }
 

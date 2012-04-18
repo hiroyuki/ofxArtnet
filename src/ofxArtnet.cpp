@@ -43,7 +43,6 @@ void ofxArtnet::setup(const char* interfaceIP, int port_addr, int verbose)
         printf("send poll failed: %s\n", artnet_strerror() );
         goto error_destroy;
 	}
-    find_timeout = ofGetElapsedTimeMillis();
     startThread(true, false);
     return;
     
@@ -81,6 +80,7 @@ void ofxArtnet::threadedFunction(){
                              break;
                      }
                  }
+                 cout << ofGetElapsedTimeMillis() << " " << find_timeout << " " <<  _TIMEOUT << endl;
                  if ( nodes_found > 0) status = NODES_FOUND;
                  else status = NOT_READY;
                  stopThread();
@@ -96,6 +96,7 @@ void ofxArtnet::sendDmx( string targetIp, const unsigned char* data512, int size
 {
     if ( status == NODES_FOUND)
     {
+        cout << "start send" << endl;
         if ( artnet_send_dmx(node, 0, targetIp.c_str(), size , data512) != ARTNET_EOK) {
             printf("Failed to Send: %s\n", artnet_strerror() );
         }

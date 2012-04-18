@@ -501,9 +501,9 @@ int artnet_net_send(node n, artnet_packet p) {
 
   if (n->state.verbose)
     printf("sending to %s\n" , inet_ntoa(addr.sin_addr));
-
+    
   ret = sendto(n->sd,
-               (char*) &p->data, // char* required for win32
+               (char*) &p->data.admx.data, // char* required for win32
                p->length,
                0,
                (SA*) &addr,

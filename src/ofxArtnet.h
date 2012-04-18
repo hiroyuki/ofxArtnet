@@ -11,7 +11,7 @@
 #include <artnet.h>
 #include "ofMain.h"
 
-#define _TIMEOUT 1000
+#define _TIMEOUT 10000
 
 
 enum status_artnet { NOT_READY, 

@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     //put your if ip
-    artnet.setup("192.168.11.18");
+    artnet.setup("192.168.1.10");
     testImage.loadImage("test.png");
 }
 
