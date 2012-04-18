@@ -602,7 +602,6 @@ int artnet_send_dmx(artnet_node vn,
     int ret, i;
     input_port_t *port;
     
-    printf("%d %d %d\n ", ((char*) data)[0], ((char*) data)[1], ((char*) data)[2]);
     check_nullnode(vn);
     
     if (n->state.mode != ARTNET_ON)
@@ -652,7 +651,8 @@ int artnet_send_dmx(artnet_node vn,
             return ARTNET_EARG;
         }
         p.data.admx.universe = tmp->pub.swout[ 0 ];
-        artnet_net_send(n, &p);	  
+        artnet_net_send(n, &p);
+        
     }
     port->seq++;
     return ARTNET_EOK;

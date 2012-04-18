@@ -60,10 +60,9 @@ void ofxArtnet::threadedFunction(){
     while(isThreadRunning()) {
          switch (status) {
              case NODES_FINDING:
-                 while (ofGetElapsedTimeMillis() - find_timeout < _TIMEOUT) {
+                 while (ofGetElapsedTimeMillis() - find_timeout < _TIMEOUT) {    
                      FD_ZERO(&rset);
                      FD_SET(sd, &rset);
-                     
                      tv.tv_usec = 0;
                      tv.tv_sec = _TIMEOUT / 1000.f;
                      maxsd = sd;
@@ -80,7 +79,6 @@ void ofxArtnet::threadedFunction(){
                              break;
                      }
                  }
-                 cout << ofGetElapsedTimeMillis() << " " << find_timeout << " " <<  _TIMEOUT << endl;
                  if ( nodes_found > 0) status = NODES_FOUND;
                  else status = NOT_READY;
                  stopThread();
@@ -94,9 +92,9 @@ void ofxArtnet::threadedFunction(){
 
 void ofxArtnet::sendDmx( string targetIp, const unsigned char* data512, int size )
 {
+    
     if ( status == NODES_FOUND)
     {
-        cout << "start send" << endl;
         if ( artnet_send_dmx(node, 0, targetIp.c_str(), size , data512) != ARTNET_EOK) {
             printf("Failed to Send: %s\n", artnet_strerror() );
         }
