@@ -1,4 +1,4 @@
-openframeworks library of libartnet - only for OS X 10.7
+openframeworks library of libartnet - only for OS X 10.7 and maybe above.
 
 Libartnet is an implementation of the ArtNet protocol. ArtNet allows the
 transmission of DMX and related data over IP networks.
