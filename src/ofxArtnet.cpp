@@ -50,7 +50,7 @@ void ofxArtnet::setup(const char* interfaceIP, int port_addr, int verbose)
     artnet_destroy(node);
     
 //    free(ops.ip_addr);
-    exit(1);
+//    exit(1);
 }
 
 void ofxArtnet::threadedFunction(){
@@ -98,5 +98,9 @@ void ofxArtnet::sendDmx( string targetIp, const unsigned char* data512, int size
         if ( artnet_send_dmx(node, 0, targetIp.c_str(), size , data512) != ARTNET_EOK) {
             printf("Failed to Send: %s\n", artnet_strerror() );
         }
+    }
+    else
+    {
+        printf("Failed to Send: %s\n", artnet_strerror() );
     }
 }
