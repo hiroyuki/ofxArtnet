@@ -10,5 +10,5 @@ transmission of DMX and related data over IP networks.
 
 ##warning
 
-* The nords subnet and universe is currently fixed to 0x01
+* The nord's subnet and universe are currently fixed to 0x01
 * The addon is used with enttec ODE. But I suppose this will work with other artnet devices
