@@ -2,30 +2,33 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    //put your if ip
-//    artnet.setup("192.168.11.100");
+    //at first you must specify the Ip address of this machine
+    artnet.setup("192.168.11.100");
+    
     ofSetFrameRate(40);
     fbo.allocate(512, 1);
-    testImage.allocate(512, 1, OF_IMAGE_COLOR);
-    
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
-    fbo.begin();
-    ofClear(0);
-    float colorR = (sin(ofGetElapsedTimeMillis() / 1000.f) / 2.f + 0.5f) * 255.f;
-    float colorG = (sin((ofGetElapsedTimeMillis() / 1000.f) + PI / 3.f) / 2.f + 0.5f) * 255.f;
-    float colorB = (sin((ofGetElapsedTimeMillis() / 1000.f)  + PI * 2.f / 3.f) / 2.f + 0.5f) * 255.f;
-    colorR = colorG = colorB = 0;
-    ofSetColor(0, 200, 200);
-    ofRect(0, 0, 512, 1);
-    fbo.end();
-    fbo.readToPixels(testImage.getPixelsRef());
-    testImage.update();
+    
+    //create send buffer by ofFbo
+    {
+        fbo.begin();
+        ofClear(0);
+        float colorR = (sin(ofGetElapsedTimeMillis() / 1000.f) / 2.f + 0.5f) * 255.f;
+        float colorG = (sin((ofGetElapsedTimeMillis() / 1000.f) + PI / 3.f) / 2.f + 0.5f) * 255.f;
+        float colorB = (sin((ofGetElapsedTimeMillis() / 1000.f)  + PI * 2.f / 3.f) / 2.f + 0.5f) * 255.f;
+        colorR = colorG = colorB = 0;
+        ofSetColor(0, 200, 200);
+        ofRect(0, 0, 512, 1);
+        fbo.end();
+        fbo.readToPixels(testImage.getPixelsRef());
+    }
+
     //list nodes for sending
-    return;
+    //Artnet subnet and universe is fixed to 0x01
     artnet.sendDmx("192.168.11.101", testImage.getPixels(), 512);
     artnet.sendDmx("192.168.11.102", testImage.getPixels(), 512);
     artnet.sendDmx("192.168.11.103", testImage.getPixels(), 510);
