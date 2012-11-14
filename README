@@ -1,6 +1,6 @@
-openframeworks library of libartnet - only for OS X 10.7 and maybe above.
+#ofxArtnet
 
-Libartnet is an implementation of the ArtNet protocol. ArtNet allows the
+**openframeworks** addon of libartnet - only for OS X 10.7 and above.
+
+**Libartnet** is an implementation of the ArtNet protocol. ArtNet allows the
 transmission of DMX and related data over IP networks.
-
-* if you want to try another OS, please have a look of network.c
