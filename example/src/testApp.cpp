@@ -20,8 +20,7 @@ void testApp::update(){
         float colorR = (sin(ofGetElapsedTimeMillis() / 1000.f) / 2.f + 0.5f) * 255.f;
         float colorG = (sin((ofGetElapsedTimeMillis() / 1000.f) + PI / 3.f) / 2.f + 0.5f) * 255.f;
         float colorB = (sin((ofGetElapsedTimeMillis() / 1000.f)  + PI * 2.f / 3.f) / 2.f + 0.5f) * 255.f;
-        colorR = colorG = colorB = 0;
-        ofSetColor(0, 200, 200);
+        ofSetColor((int)colorR, (int)colorG, (int)colorB);
         ofRect(0, 0, 512, 1);
         fbo.end();
         fbo.readToPixels(testImage.getPixelsRef());
