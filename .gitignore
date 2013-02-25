@@ -1,0 +1,4 @@
+*.app
+*.o
+*.DS_Store
+example/.DS_Store
