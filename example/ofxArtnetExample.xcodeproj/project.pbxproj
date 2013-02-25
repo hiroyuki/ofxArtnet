@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0287F330153C35C5005114FF /* artnet.c in Sources */ = {isa = PBXBuildFile; fileRef = 0287F324153C35C5005114FF /* artnet.c */; };
-		0287F331153C35C5005114FF /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 0287F327153C35C5005114FF /* misc.c */; };
-		0287F332153C35C5005114FF /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = 0287F329153C35C5005114FF /* network.c */; };
-		0287F333153C35C5005114FF /* receive.c in Sources */ = {isa = PBXBuildFile; fileRef = 0287F32C153C35C5005114FF /* receive.c */; };
-		0287F334153C35C5005114FF /* tod.c in Sources */ = {isa = PBXBuildFile; fileRef = 0287F32D153C35C5005114FF /* tod.c */; };
-		0287F335153C35C5005114FF /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 0287F32F153C35C5005114FF /* transmit.c */; };
 		02D13E8714BC3AA20005E779 /* ofxArtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02D13E8614BC3AA20005E779 /* ofxArtnet.cpp */; };
+		1B3818D516DB45A80044AB52 /* artnet.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B3818CF16DB45A80044AB52 /* artnet.c */; };
+		1B3818D616DB45A80044AB52 /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B3818D016DB45A80044AB52 /* misc.c */; };
+		1B3818D716DB45A80044AB52 /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B3818D116DB45A80044AB52 /* network.c */; };
+		1B3818D816DB45A80044AB52 /* receive.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B3818D216DB45A80044AB52 /* receive.c */; };
+		1B3818D916DB45A80044AB52 /* tod.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B3818D316DB45A80044AB52 /* tod.c */; };
+		1B3818DA16DB45A80044AB52 /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B3818D416DB45A80044AB52 /* transmit.c */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -64,21 +64,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0287F324153C35C5005114FF /* artnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = artnet.c; sourceTree = "<group>"; };
-		0287F325153C35C5005114FF /* artnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = artnet.h; sourceTree = "<group>"; };
-		0287F326153C35C5005114FF /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
-		0287F327153C35C5005114FF /* misc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = misc.c; sourceTree = "<group>"; };
-		0287F328153C35C5005114FF /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
-		0287F329153C35C5005114FF /* network.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = network.c; sourceTree = "<group>"; };
-		0287F32A153C35C5005114FF /* packets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = packets.h; sourceTree = "<group>"; };
-		0287F32B153C35C5005114FF /* private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = private.h; sourceTree = "<group>"; };
-		0287F32C153C35C5005114FF /* receive.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = receive.c; sourceTree = "<group>"; };
-		0287F32D153C35C5005114FF /* tod.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tod.c; sourceTree = "<group>"; };
-		0287F32E153C35C5005114FF /* tod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tod.h; sourceTree = "<group>"; };
-		0287F32F153C35C5005114FF /* transmit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = transmit.c; sourceTree = "<group>"; };
 		02C37ED8153C638600680767 /* ofxArtnetExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ofxArtnetExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D13E8614BC3AA20005E779 /* ofxArtnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxArtnet.cpp; sourceTree = "<group>"; };
 		02D13E8814BC3AAC0005E779 /* ofxArtnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxArtnet.h; sourceTree = "<group>"; };
+		1B3818C816DB45A80044AB52 /* artnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = artnet.h; sourceTree = "<group>"; };
+		1B3818C916DB45A80044AB52 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		1B3818CA16DB45A80044AB52 /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
+		1B3818CB16DB45A80044AB52 /* packets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = packets.h; sourceTree = "<group>"; };
+		1B3818CC16DB45A80044AB52 /* private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = private.h; sourceTree = "<group>"; };
+		1B3818CD16DB45A80044AB52 /* tod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tod.h; sourceTree = "<group>"; };
+		1B3818CF16DB45A80044AB52 /* artnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = artnet.c; sourceTree = "<group>"; };
+		1B3818D016DB45A80044AB52 /* misc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = misc.c; sourceTree = "<group>"; };
+		1B3818D116DB45A80044AB52 /* network.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = network.c; sourceTree = "<group>"; };
+		1B3818D216DB45A80044AB52 /* receive.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = receive.c; sourceTree = "<group>"; };
+		1B3818D316DB45A80044AB52 /* tod.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tod.c; sourceTree = "<group>"; };
+		1B3818D416DB45A80044AB52 /* transmit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = transmit.c; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -129,28 +129,9 @@
 		0287F322153C35C5005114FF /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				0287F323153C35C5005114FF /* artnet */,
+				1B3818C616DB45A80044AB52 /* artnet */,
 			);
 			path = libs;
-			sourceTree = "<group>";
-		};
-		0287F323153C35C5005114FF /* artnet */ = {
-			isa = PBXGroup;
-			children = (
-				0287F324153C35C5005114FF /* artnet.c */,
-				0287F325153C35C5005114FF /* artnet.h */,
-				0287F326153C35C5005114FF /* common.h */,
-				0287F327153C35C5005114FF /* misc.c */,
-				0287F328153C35C5005114FF /* misc.h */,
-				0287F329153C35C5005114FF /* network.c */,
-				0287F32A153C35C5005114FF /* packets.h */,
-				0287F32B153C35C5005114FF /* private.h */,
-				0287F32C153C35C5005114FF /* receive.c */,
-				0287F32D153C35C5005114FF /* tod.c */,
-				0287F32E153C35C5005114FF /* tod.h */,
-				0287F32F153C35C5005114FF /* transmit.c */,
-			);
-			path = artnet;
 			sourceTree = "<group>";
 		};
 		02D13E8314BC3A8A0005E779 /* ofxArtnet */ = {
@@ -168,6 +149,42 @@
 			children = (
 				02D13E8614BC3AA20005E779 /* ofxArtnet.cpp */,
 				02D13E8814BC3AAC0005E779 /* ofxArtnet.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		1B3818C616DB45A80044AB52 /* artnet */ = {
+			isa = PBXGroup;
+			children = (
+				1B3818C716DB45A80044AB52 /* include */,
+				1B3818CE16DB45A80044AB52 /* src */,
+			);
+			name = artnet;
+			path = ../libs/artnet;
+			sourceTree = SOURCE_ROOT;
+		};
+		1B3818C716DB45A80044AB52 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				1B3818C816DB45A80044AB52 /* artnet.h */,
+				1B3818C916DB45A80044AB52 /* common.h */,
+				1B3818CA16DB45A80044AB52 /* misc.h */,
+				1B3818CB16DB45A80044AB52 /* packets.h */,
+				1B3818CC16DB45A80044AB52 /* private.h */,
+				1B3818CD16DB45A80044AB52 /* tod.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		1B3818CE16DB45A80044AB52 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1B3818CF16DB45A80044AB52 /* artnet.c */,
+				1B3818D016DB45A80044AB52 /* misc.c */,
+				1B3818D116DB45A80044AB52 /* network.c */,
+				1B3818D216DB45A80044AB52 /* receive.c */,
+				1B3818D316DB45A80044AB52 /* tod.c */,
+				1B3818D416DB45A80044AB52 /* transmit.c */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -343,12 +360,12 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				02D13E8714BC3AA20005E779 /* ofxArtnet.cpp in Sources */,
-				0287F330153C35C5005114FF /* artnet.c in Sources */,
-				0287F331153C35C5005114FF /* misc.c in Sources */,
-				0287F332153C35C5005114FF /* network.c in Sources */,
-				0287F333153C35C5005114FF /* receive.c in Sources */,
-				0287F334153C35C5005114FF /* tod.c in Sources */,
-				0287F335153C35C5005114FF /* transmit.c in Sources */,
+				1B3818D516DB45A80044AB52 /* artnet.c in Sources */,
+				1B3818D616DB45A80044AB52 /* misc.c in Sources */,
+				1B3818D716DB45A80044AB52 /* network.c in Sources */,
+				1B3818D816DB45A80044AB52 /* receive.c in Sources */,
+				1B3818D916DB45A80044AB52 /* tod.c in Sources */,
+				1B3818DA16DB45A80044AB52 /* transmit.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
