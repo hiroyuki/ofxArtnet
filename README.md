@@ -3,7 +3,11 @@
 ![artnet icon](http://www.enttec.com/img/ode/angle_small.jpg)
 
 
-**openframeworks** addon of libartnet - for OS X 10.7 and above.
+**openframeworks** addon of libartnet - 
+worked at below OSs.
+Raspberrypi
+OS X 10.7 and above.
+windows 7
 
 **Libartnet** is an implementation of the ArtNet protocol. ArtNet allows the
 transmission of DMX and related data over IP networks.
