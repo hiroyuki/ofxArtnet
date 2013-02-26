@@ -20,7 +20,6 @@
  */
 
 #include <errno.h>
-
 #ifndef WIN32
 #include <sys/socket.h> // socket before net/if.h for mac
 #include <net/if.h>
@@ -34,28 +33,22 @@ typedef int socklen_t;
 
 #include "private.h"
 
-//#ifdef HAVE_GETIFADDRS
-//// #ifdef HAVE_LINUX_IF_PACKET_H
-//   #define USE_GETIFADDRS
-//// #endif
-//#endif
-
 //custermized by horristic
 //modified by James Kong
-#ifdef WIN32
-#include "unistd_d.h"
-#include <windows.h>
-#else
-#include <unistd.h>
+#ifdef TARGET_WIN32
+  #include "unistd_d.h"
+  #include <windows.h>
+#endif
 #ifdef TARGET_LINUX_ARM
   #include <ifaddrs.h>
   #include <net/if_types.h>
   #include <net/if_dl.h>
+  #include <unistd.h>
 //support RaspberryPi
-#elif __APPLE__
-  #include "TargetConditionals.h"
-  #include <ifaddrs.h>
 #endif
+#ifdef TARGET_OSX
+  #include <ifaddrs.h>
+  #include <unistd.h>
 #endif
 
 enum { INITIAL_IFACE_COUNT = 10 };
@@ -112,7 +105,7 @@ static iface_t *new_iface(iface_t **head, iface_t **tail) {
 }
 
 
-#ifdef WIN32
+#ifdef TARGET_WIN32
 
 /*
  * Set if_head to point to a list of iface_t structures which represent the
