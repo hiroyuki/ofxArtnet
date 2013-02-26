@@ -43,16 +43,15 @@ typedef int socklen_t;
 //#endif
 
 //custermized by horristic
-#ifndef WIN32
 //modified by James Kong
 #ifdef TARGET_LINUX_ARM
   #include <ifaddrs.h>
   #include <net/if_types.h>
   #include <net/if_dl.h>
-#else
 //support RaspberryPi
+#elif __APPLE__
+  #include "TargetConditionals.h"
   #include <ifaddrs.h>
-#endif
 #endif
 
 

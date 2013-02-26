@@ -57,6 +57,7 @@ void ofxArtnet::threadedFunction(){
     int maxsd;
     fd_set rset;
 	struct timeval tv;
+
     while(isThreadRunning()) {
          switch (status) {
              case NODES_FINDING:
@@ -83,7 +84,6 @@ void ofxArtnet::threadedFunction(){
                  else status = NOT_READY;
                  stopThread();
                  break;
-                 
              default:
                  break;
          }
@@ -99,8 +99,8 @@ void ofxArtnet::sendDmx( string targetIp, const unsigned char* data512, int size
             printf("Failed to Send: %s\n", artnet_strerror() );
         }
     }
-    else
+    else if ( status != NODES_FINDING)
     {
-        printf("Failed to Send: %s\n", artnet_strerror() );
+        ofLogError() << "node is not found";
     }
 }

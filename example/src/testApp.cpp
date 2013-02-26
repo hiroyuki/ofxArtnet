@@ -30,7 +30,7 @@ void testApp::update(){
     //Artnet subnet and universe is fixed to 0x01
     artnet.sendDmx("192.168.11.101", testImage.getPixels(), 512);
     artnet.sendDmx("192.168.11.102", testImage.getPixels(), 512);
-    artnet.sendDmx("192.168.11.103", testImage.getPixels(), 510);
+    artnet.sendDmx("192.168.11.103", testImage.getPixels(), 512);
     artnet.sendDmx("192.168.11.104", testImage.getPixels(), 512);
     artnet.sendDmx("192.168.11.105", testImage.getPixels(), 512);
     artnet.sendDmx("192.168.11.106", testImage.getPixels(), 512);
