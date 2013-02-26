@@ -35,18 +35,16 @@ typedef int socklen_t;
 
 //custermized by horristic
 //modified by James Kong
-#ifdef TARGET_WIN32
-  #include "unistd_d.h"
-  #include <windows.h>
+#ifdef _WIN32
+#include "unistd_d.h"
+#include <windows.h>
 #endif
-#ifndef __unix
-  #include <ifaddrs.h>
-  #include <net/if_types.h>
-  #include <net/if_dl.h>
+#ifdef __unix
+#include <ifaddrs.h>
 #endif
-#ifdef TARGET_OSX
-  #include <ifaddrs.h>
-  #include <unistd.h>
+#ifdef __APPLE__
+#include <ifaddrs.h>
+#include <unistd.h>
 #endif
 
 enum { INITIAL_IFACE_COUNT = 10 };
