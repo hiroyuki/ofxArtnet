@@ -8,9 +8,7 @@
 worked at below OSs.
 
 **Raspberrypi**
-
 **OS X 10.7 and above**
-
 **windows 7**
 
 **Libartnet** is an implementation of the ArtNet protocol. ArtNet allows the
