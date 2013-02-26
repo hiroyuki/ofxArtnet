@@ -2,3 +2,9 @@
 *.o
 *.DS_Store
 example/.DS_Store
+*.sdf
+*.suo
+*.opensdf
+*/obj/*
+*/ipch/*
+*/bin/*

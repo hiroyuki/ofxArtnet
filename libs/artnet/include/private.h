@@ -345,6 +345,24 @@ typedef struct {
 #define port_enabled port.enabled
 #define port_tod port.tod
 
+#if defined( __WIN32__ ) || defined( _WIN32 )
+#define TARGET_WIN32
+#elif defined( __APPLE_CC__)
+#include <TargetConditionals.h>
+
+#if (TARGET_OS_IPHONE_SIMULATOR) || (TARGET_OS_IPHONE) || (TARGET_IPHONE)
+#define TARGET_OF_IPHONE
+#define TARGET_OPENGLES
+#else
+#define TARGET_OSX
+#endif
+#elif defined (ANDROID)
+#define TARGET_ANDROID
+#define TARGET_OPENGLES
+#else
+#define TARGET_LINUX
+#endif
+
 // End port structures
 //-----------------------------------------------------------------------------
 
