@@ -39,12 +39,10 @@ typedef int socklen_t;
   #include "unistd_d.h"
   #include <windows.h>
 #endif
-#ifdef TARGET_LINUX_ARM
+#ifndef __unix
   #include <ifaddrs.h>
   #include <net/if_types.h>
   #include <net/if_dl.h>
-  #include <unistd.h>
-//support RaspberryPi
 #endif
 #ifdef TARGET_OSX
   #include <ifaddrs.h>
