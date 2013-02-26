@@ -32,8 +32,6 @@ typedef int socklen_t;
 #include <iphlpapi.h>
 #endif
 
-#include <unistd.h>
-
 #include "private.h"
 
 //#ifdef HAVE_GETIFADDRS
@@ -44,6 +42,11 @@ typedef int socklen_t;
 
 //custermized by horristic
 //modified by James Kong
+#ifdef WIN32
+#include "unistd_d.h"
+#include <windows.h>
+#else
+#include <unistd.h>
 #ifdef TARGET_LINUX_ARM
   #include <ifaddrs.h>
   #include <net/if_types.h>
@@ -53,7 +56,7 @@ typedef int socklen_t;
   #include "TargetConditionals.h"
   #include <ifaddrs.h>
 #endif
-
+#endif
 
 enum { INITIAL_IFACE_COUNT = 10 };
 enum { IFACE_COUNT_INC = 5 };
@@ -121,6 +124,7 @@ static int get_ifaces(iface_t **if_head) {
   PIP_ADAPTER_INFO pAdapter = NULL;
   PIP_ADAPTER_INFO pAdapterInfo;
   IP_ADDR_STRING *ipAddress;
+  DWORD status;
   ULONG ulOutBufLen = sizeof(IP_ADAPTER_INFO);
   unsigned long net, mask;
   if_tail = NULL;
@@ -132,7 +136,7 @@ static int get_ifaces(iface_t **if_head) {
       return ARTNET_EMEM;
     }
 
-    DWORD status = GetAdaptersInfo(pAdapterInfo, &ulOutBufLen);
+    status= GetAdaptersInfo(pAdapterInfo, &ulOutBufLen);
     if (status == NO_ERROR)
       break;
 
@@ -354,6 +358,7 @@ int artnet_net_start(node n) {
 #ifdef WIN32
     // check winsock version
     WSADATA wsaData;
+    u_long _true = 1;
     WORD wVersionRequested = MAKEWORD(2, 2);
     if (WSAStartup(wVersionRequested, &wsaData) != 0)
       return (-1);
@@ -410,8 +415,7 @@ int artnet_net_start(node n) {
       return ARTNET_ENET;
     }
 
-    u_long true = 1;
-    if (SOCKET_ERROR == ioctlsocket(sock, FIONBIO, &true)) {
+    if (SOCKET_ERROR == ioctlsocket(sock, FIONBIO, &_true)) {
 
       artnet_error("ioctlsocket", artnet_net_last_error());
       artnet_net_close(sock);

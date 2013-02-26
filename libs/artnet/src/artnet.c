@@ -346,12 +346,12 @@ int artnet_read(artnet_node vn, int timeout) {
  */
 int artnet_join(artnet_node vn1, artnet_node vn2) {
 
+  node n1, n2;
+  node tmp, n;
   check_nullnode(vn1);
   check_nullnode(vn2);
-
-  node n1 = (node) vn1;
-  node n2 = (node) vn2;
-  node tmp, n;
+  n1 = (node) vn1;
+  n2 = (node) vn2;
 
   if (n1->state.mode == ARTNET_ON || n2->state.mode == ARTNET_ON) {
     artnet_error("%s called after artnet_start", __FUNCTION__);
@@ -597,6 +597,7 @@ int artnet_send_dmx(artnet_node vn,
                     const char* targetIp,
                     int16_t length,
                     const uint8_t *data) {
+	node_entry_private_t *tmp;
     node n = (node) vn;
     artnet_packet_t p;
     int ret, i;
@@ -644,7 +645,7 @@ int artnet_send_dmx(artnet_node vn,
     if( targetIp != 0 ) 
     {
         p.to.s_addr = inet_addr( targetIp );	
-        node_entry_private_t *tmp = find_entry_from_ip(&(n->node_list), p.to);
+        tmp = find_entry_from_ip(&(n->node_list), p.to);
         if (tmp == 0 ) 
         {
             artnet_error("%s : %s is not found", __FUNCTION__, targetIp);
@@ -1596,10 +1597,10 @@ void copy_apr_to_node_entry(artnet_node_entry e, artnet_reply_t *reply) {
  * find a node_entry in the node list
  */
 node_entry_private_t *find_private_entry(node n, artnet_node_entry e) {
+  node_entry_private_t *tmp;
   if (!e)
     return NULL;
 
-  node_entry_private_t *tmp;
 
   // check if this packet is in list
   for(tmp = n->node_list.first; tmp; tmp = tmp->next) {

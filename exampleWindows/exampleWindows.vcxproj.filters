@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\src\ofxArtnet.cpp">
+      <Filter>addons\ofxArtnet\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\artnet.c">
+      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\misc.c">
+      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\network.c">
+      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\receive.c">
+      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\tod.c">
+      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxArtnet\libs\artnet\src\transmit.c">
+      <Filter>addons\ofxArtnet\libs\artnet\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834f65-f3a9-211e-73b8-dc8563776aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxArtnet">
+      <UniqueIdentifier>{1f6cc159-95b3-e637-8bc3-d88375f261c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxArtnet\src">
+      <UniqueIdentifier>{00f3d8af-fc0d-a159-c905-621131728a6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxArtnet\libs">
+      <UniqueIdentifier>{24fda2b0-e3a6-869c-3a63-797d8282ab6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxArtnet\libs\artnet">
+      <UniqueIdentifier>{ffca0b30-f90b-63f9-ba8d-f94496a7b90c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxArtnet\libs\artnet\include">
+      <UniqueIdentifier>{f81d254f-9dff-085b-8759-a151f1a4c734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxArtnet\libs\artnet\src">
+      <UniqueIdentifier>{d1ceefa5-8343-2283-fe7d-153f80044811}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\src\ofxArtnet.h">
+      <Filter>addons\ofxArtnet\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\artnet.h">
+      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\common.h">
+      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\misc.h">
+      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\packets.h">
+      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\private.h">
+      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxArtnet\libs\artnet\include\tod.h">
+      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\artnet\include\unistd_d.h">
+      <Filter>addons\ofxArtnet\libs\artnet\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
