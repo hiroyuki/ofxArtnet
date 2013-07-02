@@ -454,7 +454,7 @@ int artnet_net_recv(node n, artnet_packet p, int delay) {
     default:
       break;
   }
-
+    
   // need a check here for the amount of data read
   // should prob allow an extra byte after data, and pass the size as sizeof(Data) +1
   // then check the size read and if equal to size(data)+1 we have an error
@@ -475,7 +475,7 @@ int artnet_net_recv(node n, artnet_packet p, int delay) {
     return ARTNET_EOK;
   }
 
-  p->length = len;
+    p->length = len;
   memcpy(&(p->from), &cliAddr.sin_addr, sizeof(struct in_addr));
   // should set to in here if we need it
   return ARTNET_EOK;

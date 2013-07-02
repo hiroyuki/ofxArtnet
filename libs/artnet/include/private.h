@@ -249,7 +249,7 @@ typedef struct {
   callback_t recv;
   callback_t send;
   callback_t poll;
-  callback_t reply;
+  callback_t __reply__;
   callback_t dmx;
   callback_t address;
   callback_t input;

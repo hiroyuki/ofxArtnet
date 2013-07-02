@@ -104,3 +104,18 @@ void ofxArtnet::sendDmx( string targetIp, const unsigned char* data512, int size
         ofLogError() << "node is not found";
     }
 }
+
+void ofxArtnet::sendDmx( string targetIp, int targetSubnet, int targetUniverse, const unsigned char* data512, int size )
+{
+    
+    if ( status == NODES_FOUND)
+    {
+        if ( artnet_send_dmx_by_custom_SU(node, 0, targetSubnet, targetUniverse, targetIp.c_str(), size , data512) != ARTNET_EOK) {
+            printf("Failed to Send: %s\n", artnet_strerror() );
+        }
+    }
+    else if ( status != NODES_FINDING)
+    {
+        ofLogError() << "node is not found";
+    }
+}

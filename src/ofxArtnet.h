@@ -47,6 +47,7 @@ public:
     void setup(const char* interfaceIP, int port_addr = 0, int verbose = 0);
     void threadedFunction();
     void sendDmx( string targetIp, const unsigned char* data512, int size );
+    void sendDmx( string targetIp, int targetSubnet, int targetUniverse, const unsigned char* data512, int size );
 
     
     private:
@@ -78,7 +79,7 @@ public:
         
         printf("Subnet:       0x%hhx\n", ne->sub);
         printf("Numb Ports:   %d\n", ne->numbports);
-        printf("Input Addrs:  0x%hhx, 0x%hhx, 0x%hhx, 0x%hhx\n", ne->swin[0], ne->swin[1], ne->swin[2], ne->swin[3] );
+//        printf("Input Addrs:  0x%hhx, 0x%hhx, 0x%hhx, 0x%hhx\n", ne->swin[0], ne->swin[1], ne->swin[2], ne->swin[3] );
         printf("Output Addrs: 0x%hhx, 0x%hhx, 0x%hhx, 0x%hhx\n", ne->swout[0], ne->swout[1], ne->swout[2], ne->swout[3] );
         printf("----------------------------------\n");
     }
