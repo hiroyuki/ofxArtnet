@@ -27,7 +27,8 @@ void testApp::update(){
     }
 
     //list nodes for sending
-    //Artnet subnet and universe is fixed to 0x01
+    //with subnet / universe
+//    artnet.sendDmx("10.0.0.149", 0xf, 0xf, testImage.getPixels(), 512);
     artnet.sendDmx("10.0.0.149", testImage.getPixels(), 512);
 }
 
