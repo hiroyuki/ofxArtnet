@@ -6,11 +6,9 @@
 //  Copyright 2012年 rhizomatiks. All rights reserved.
 //
 #include "ofxArtnet.h"
-
 int ofxArtnet::nodes_found;
+bool ofxArtnet::verbose;
 status_artnet ofxArtnet::status;
-
-
 void ofxArtnet::setup(const char* interfaceIP, int port_addr, int verbose)
 {
     nodes_found = 0;
@@ -19,7 +17,7 @@ void ofxArtnet::setup(const char* interfaceIP, int port_addr, int verbose)
     
     if ( (node = artnet_new(interfaceIP, verbose)) == NULL) 
     {
-        printf("cannot create node: %s\n", artnet_strerror() );
+        if ( verbose ) printf("cannot create node: %s\n", artnet_strerror() );
         goto error_destroy;            
     }
     artnet_set_short_name(node, SHORT_NAME.c_str());
@@ -31,7 +29,7 @@ void ofxArtnet::setup(const char* interfaceIP, int port_addr, int verbose)
     artnet_set_handler(node, ARTNET_REPLY_HANDLER, ofxArtnet::reply_handler, NULL);
     
     if (artnet_start(node) != ARTNET_EOK) {
-        printf("Failed to start: %s\n", artnet_strerror() );
+        if ( verbose ) printf("Failed to start: %s\n", artnet_strerror() );
         goto error_destroy;
     }
     
@@ -57,7 +55,6 @@ void ofxArtnet::threadedFunction(){
     int maxsd;
     fd_set rset;
 	struct timeval tv;
-
     while(isThreadRunning()) {
          switch (status) {
              case NODES_FINDING:
@@ -84,38 +81,27 @@ void ofxArtnet::threadedFunction(){
                  else status = NOT_READY;
                  stopThread();
                  break;
+                 
              default:
                  break;
          }
      }
 }
 
-void ofxArtnet::sendDmx( string targetIp, const unsigned char* data512, int size )
+int ofxArtnet::sendDmx( string targetIp, const unsigned char* data512, int size )
 {
-    
+    int result = ARTNET_EOK;
     if ( status == NODES_FOUND)
     {
-        if ( artnet_send_dmx(node, 0, targetIp.c_str(), size , data512) != ARTNET_EOK) {
-            printf("Failed to Send: %s\n", artnet_strerror() );
+        result = artnet_send_dmx(node, 0, targetIp.c_str(), size , data512);
+        if ( result != ARTNET_EOK) {
+            if ( verbose ) printf("[ofxArtnet]Failed to Send: %s\n", artnet_strerror() );
         }
     }
-    else if ( status != NODES_FINDING)
+    else
     {
-        ofLogError() << "node is not found";
+        if ( verbose ) printf("NODES_IS_NOT_FOUND\n");
+        result = ARTNET_EFOUND;
     }
-}
-
-void ofxArtnet::sendDmx( string targetIp, int targetSubnet, int targetUniverse, const unsigned char* data512, int size )
-{
-    
-    if ( status == NODES_FOUND)
-    {
-        if ( artnet_send_dmx_by_custom_SU(node, 0, targetSubnet, targetUniverse, targetIp.c_str(), size , data512) != ARTNET_EOK) {
-            printf("Failed to Send: %s\n", artnet_strerror() );
-        }
-    }
-    else if ( status != NODES_FINDING)
-    {
-        ofLogError() << "node is not found";
-    }
+    return result;
 }

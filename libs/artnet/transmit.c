@@ -19,9 +19,6 @@
  */
 
 #include "private.h"
-#ifdef WIN32
-#define snprintf _snprintf
-#endif
 
 /*
  * Send an art poll
