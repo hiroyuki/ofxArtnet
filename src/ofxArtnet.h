@@ -8,8 +8,8 @@
 
 #ifndef artnet_ofxArtnet_h
 #define artnet_ofxArtnet_h
-#include <artnet.h>
 #include "ofMain.h"
+#include <artnet.h>
 
 #define _TIMEOUT 1000
 
