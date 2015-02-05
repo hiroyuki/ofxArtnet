@@ -1,5 +1,7 @@
 #ofxArtnet
 
+[![Join the chat at https://gitter.im/hiroyuki/ofxArtnet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hiroyuki/ofxArtnet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ![artnet icon](http://www.enttec.com/img/ode/angle_small.jpg)
 
 
