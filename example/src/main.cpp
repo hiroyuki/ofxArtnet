@@ -1,5 +1,5 @@
 #include "ofMain.h"
-#include "ofApp.h"
+#include "testApp.h"
 #ifndef TARGET_LINUX_ARM
 #include "ofAppGlutWindow.h"
 #endif
