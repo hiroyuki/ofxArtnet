@@ -6,7 +6,7 @@ void testApp::setup(){
     artnet.setup("10.0.0.4");
     
     ofSetFrameRate(40);
-    fbo.allocate(512, 1);
+    fbo.allocate(512, 1, GL_RGB);
 }
 
 //--------------------------------------------------------------
