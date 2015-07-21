@@ -4,9 +4,10 @@
 void testApp::setup(){
     //at first you must specify the Ip address of this machine
     artnet.setup("10.0.0.4");
+    //make sure the firewall is deactivated at this point
     
     ofSetFrameRate(40);
-    fbo.allocate(512, 1);
+    fbo.allocate(512, 1, GL_RGB);
 }
 
 //--------------------------------------------------------------
