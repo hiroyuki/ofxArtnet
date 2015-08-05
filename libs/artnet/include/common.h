@@ -30,8 +30,8 @@ enum {
   ARTNET_EMEM = -2, // memory error
   ARTNET_EARG = -3, // argument error
   ARTNET_ESTATE = -4, // state error
-  ARTNET_EACTION = -5, // invalid action
-  ARTNET_EFOUND = -6, // artnet node not found
+ARTNET_EACTION = -5, // invalid action
+ARTNET_EFOUND = -6, // artnet node not found
 };
 
 

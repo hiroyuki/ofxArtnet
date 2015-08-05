@@ -20,7 +20,6 @@
  */
 
 #include <errno.h>
-
 #ifndef WIN32
 #include <sys/socket.h> // socket before net/if.h for mac
 #include <net/if.h>
@@ -32,23 +31,21 @@ typedef int socklen_t;
 #include <iphlpapi.h>
 #endif
 
-#include <unistd.h>
-
 #include "private.h"
 
-//#ifdef HAVE_GETIFADDRS
-//// #ifdef HAVE_LINUX_IF_PACKET_H
-//   #define USE_GETIFADDRS
-//// #endif
-//#endif
-
 //custermized by horristic
-#ifndef WIN32
-  #include <ifaddrs.h>
-  #include <net/if_types.h>
-  #include <net/if_dl.h>
+//modified by James Kong
+#ifdef _WIN32
+#include "unistd_d.h"
+#include <windows.h>
 #endif
-
+#ifdef __unix
+#include <ifaddrs.h>
+#endif
+#ifdef __APPLE__
+#include <ifaddrs.h>
+#include <unistd.h>
+#endif
 
 enum { INITIAL_IFACE_COUNT = 10 };
 enum { IFACE_COUNT_INC = 5 };
@@ -104,7 +101,7 @@ static iface_t *new_iface(iface_t **head, iface_t **tail) {
 }
 
 
-#ifdef WIN32
+#ifdef TARGET_WIN32
 
 /*
  * Set if_head to point to a list of iface_t structures which represent the
@@ -116,6 +113,7 @@ static int get_ifaces(iface_t **if_head) {
   PIP_ADAPTER_INFO pAdapter = NULL;
   PIP_ADAPTER_INFO pAdapterInfo;
   IP_ADDR_STRING *ipAddress;
+  DWORD status;
   ULONG ulOutBufLen = sizeof(IP_ADAPTER_INFO);
   unsigned long net, mask;
   if_tail = NULL;
@@ -127,7 +125,7 @@ static int get_ifaces(iface_t **if_head) {
       return ARTNET_EMEM;
     }
 
-    DWORD status = GetAdaptersInfo(pAdapterInfo, &ulOutBufLen);
+    status= GetAdaptersInfo(pAdapterInfo, &ulOutBufLen);
     if (status == NO_ERROR)
       break;
 
@@ -349,6 +347,7 @@ int artnet_net_start(node n) {
 #ifdef WIN32
     // check winsock version
     WSADATA wsaData;
+    u_long _true = 1;
     WORD wVersionRequested = MAKEWORD(2, 2);
     if (WSAStartup(wVersionRequested, &wsaData) != 0)
       return (-1);
@@ -405,8 +404,7 @@ int artnet_net_start(node n) {
       return ARTNET_ENET;
     }
 
-    u_long true = 1;
-    if (SOCKET_ERROR == ioctlsocket(sock, FIONBIO, &true)) {
+    if (SOCKET_ERROR == ioctlsocket(sock, FIONBIO, &_true)) {
 
       artnet_error("ioctlsocket", artnet_net_last_error());
       artnet_net_close(sock);
@@ -456,7 +454,7 @@ int artnet_net_recv(node n, artnet_packet p, int delay) {
     default:
       break;
   }
-
+    
   // need a check here for the amount of data read
   // should prob allow an extra byte after data, and pass the size as sizeof(Data) +1
   // then check the size read and if equal to size(data)+1 we have an error
@@ -477,7 +475,7 @@ int artnet_net_recv(node n, artnet_packet p, int delay) {
     return ARTNET_EOK;
   }
 
-  p->length = len;
+    p->length = len;
   memcpy(&(p->from), &cliAddr.sin_addr, sizeof(struct in_addr));
   // should set to in here if we need it
   return ARTNET_EOK;
