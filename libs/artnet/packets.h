@@ -25,11 +25,7 @@
 #include <sys/types.h>
 #include <stdint.h>
 
-#ifdef WIN32
-#if !defined(__GNUC__) || __GNUC__ < 2 || __GNUC__ < 5
-#define __attribute__(x)
-#endif
-#else
+#ifndef WIN32
 #include <netinet/in.h>
 #endif
 

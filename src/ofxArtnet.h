@@ -8,7 +8,6 @@
 
 #ifndef artnet_ofxArtnet_h
 #define artnet_ofxArtnet_h
-
 #include "ofMain.h"
 #include <artnet.h>
 
@@ -31,7 +30,6 @@ public:
     string LONG_NAME;
     static status_artnet status;
     int find_timeout, sd;
-
     artnet_node node;
     
     ofxArtnet()
@@ -85,7 +83,7 @@ public:
             
             printf("Subnet:       0x%hhx\n", ne->sub);
             printf("Numb Ports:   %d\n", ne->numbports);
-    //        printf("Input Addrs:  0x%hhx, 0x%hhx, 0x%hhx, 0x%hhx\n", ne->swin[0], ne->swin[1], ne->swin[2], ne->swin[3] );
+            printf("Input Addrs:  0x%hhx, 0x%hhx, 0x%hhx, 0x%hhx\n", ne->swin[0], ne->swin[1], ne->swin[2], ne->swin[3] );
             printf("Output Addrs: 0x%hhx, 0x%hhx, 0x%hhx, 0x%hhx\n", ne->swout[0], ne->swout[1], ne->swout[2], ne->swout[3] );
             printf("----------------------------------\n");
         }

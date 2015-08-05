@@ -72,8 +72,9 @@ int handle_poll(node n, artnet_packet p) {
 void handle_reply(node n, artnet_packet p) {
   // update the node list
   artnet_nl_update(&n->node_list, p);
+
   // run callback if defined
-  if (check_callback(n, p, n->callbacks.__reply__))
+  if (check_callback(n, p, n->callbacks.reply))
     return;
 }
 
@@ -757,9 +758,10 @@ void handle_ipprog(node n, artnet_packet p) {
  * the appropriate handler function
  */
 int handle(node n, artnet_packet p) {
-    
+
   if (check_callback(n, p, n->callbacks.recv))
     return 0;
+
   switch (p->type) {
     case ARTNET_POLL:
       handle_poll(n, p);
