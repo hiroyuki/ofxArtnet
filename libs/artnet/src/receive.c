@@ -547,7 +547,7 @@ int handle_firmware(node n, artnet_packet p) {
 
       // set parameters
       n->firmware.peer.s_addr = p->from.s_addr;
-      n->firmware.data = malloc(length);
+	  n->firmware.data = (uint16_t *)malloc(length);
 
       if (n->firmware.data  == NULL) {
         artnet_error_malloc();
@@ -843,7 +843,7 @@ int16_t get_type(artnet_packet p) {
     // not the best here, this needs to be tested on different arch
     data = (uint8_t *) &p->data;
 
-    p->type = (data[9] << 8) + data[8];
+    p->type = (artnet_packet_type_t)((data[9] << 8) + data[8]);
     return p->type;
   } else {
     return 0;

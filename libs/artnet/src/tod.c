@@ -35,7 +35,7 @@ int add_tod_uid(tod_t *tod, uint8_t uid[ARTNET_RDM_UID_WIDTH]) {
 
   if (tod->data == NULL) {
     // malloc
-    tod->data = malloc(ARTNET_RDM_UID_WIDTH * ARTNET_TOD_INITIAL_SIZE);
+    tod->data = (uint8_t *)malloc(ARTNET_RDM_UID_WIDTH * ARTNET_TOD_INITIAL_SIZE);
 
     if (tod->data == NULL) {
       artnet_error_malloc();
@@ -47,7 +47,7 @@ int add_tod_uid(tod_t *tod, uint8_t uid[ARTNET_RDM_UID_WIDTH]) {
   } else if (tod->length == tod->max_length) {
     // realloc
     size = (tod->max_length + ARTNET_TOD_INCREMENT);
-    tod->data = realloc(tod->data, size * ARTNET_RDM_UID_WIDTH);
+	tod->data = (uint8_t *)realloc(tod->data, size * ARTNET_RDM_UID_WIDTH);
 
     if (tod->data == NULL) {
       artnet_error_realloc();

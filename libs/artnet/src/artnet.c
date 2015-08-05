@@ -79,7 +79,7 @@ artnet_node artnet_new(const char *ip, int verbose) {
   node n;
   int i;
 
-  n = malloc(sizeof(artnet_node_t));
+  n = (node)malloc(sizeof(artnet_node_t));
     
   if (!n) {
     artnet_error("malloc failure");
@@ -914,7 +914,7 @@ int artnet_send_firmware(
     blen = length * sizeof(uint16_t);
 
     // store the parameters for this transfer
-    ent->firmware.data = malloc(blen);
+    ent->firmware.data = (uint16_t *)malloc(blen);
 
     if ( ent->firmware.data == NULL) {
       artnet_error_malloc();
