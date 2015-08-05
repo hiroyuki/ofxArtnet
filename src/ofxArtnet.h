@@ -24,11 +24,13 @@ class ofxArtnet : public ofThread
 {
 public:
     static int nodes_found;
+    static bool verbose;
+    
     string SHORT_NAME;
     string LONG_NAME;
     static status_artnet status;
     int find_timeout, sd;
-    static  bool verbose;
+
     artnet_node node;
     
     ofxArtnet()

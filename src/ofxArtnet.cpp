@@ -8,6 +8,7 @@
 #include "ofxArtnet.h"
 
 int ofxArtnet::nodes_found;
+bool ofxArtnet::verbose;
 status_artnet ofxArtnet::status;
 
 
