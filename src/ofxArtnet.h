@@ -28,11 +28,12 @@ public:
     string LONG_NAME;
     static status_artnet status;
     int find_timeout, sd;
-    
+    static  bool verbose;
     artnet_node node;
     
     ofxArtnet()
     {
+        verbose = true;
         nodes_found = 0;
         status = NOT_READY;
         SHORT_NAME = "ArtNet Node";
@@ -46,8 +47,8 @@ public:
     
     void setup(const char* interfaceIP, int port_addr = 0, int verbose = 0);
     void threadedFunction();
-    void sendDmx( string targetIp, const unsigned char* data512, int size );
-    void sendDmx( string targetIp, int targetSubnet, int targetUniverse, const unsigned char* data512, int size );
+    int sendDmx( string targetIp, const unsigned char* data512, int size );
+    int sendDmx( string targetIp, int targetSubnet, int targetUniverse, const unsigned char* data512, int size );
 
     
     private:
@@ -70,18 +71,21 @@ public:
     }
     
     void static print_node_config(artnet_node_entry ne) {
-        char ips[50] = "";
-        sprintf(ips,"%d.%d.%d.%d", ne->ip[0], ne->ip[1], ne->ip[2], ne->ip[3]);
-        printf("--------- %d.%d.%d.%d -------------\n", ne->ip[0], ne->ip[1], ne->ip[2], ne->ip[3]);
-        printf("Short Name:   %s\n", ne->shortname);
-        printf("Long Name:    %s\n", ne->longname);
-        printf("Node Report:  %s\n", ne->nodereport);
-        
-        printf("Subnet:       0x%hhx\n", ne->sub);
-        printf("Numb Ports:   %d\n", ne->numbports);
-//        printf("Input Addrs:  0x%hhx, 0x%hhx, 0x%hhx, 0x%hhx\n", ne->swin[0], ne->swin[1], ne->swin[2], ne->swin[3] );
-        printf("Output Addrs: 0x%hhx, 0x%hhx, 0x%hhx, 0x%hhx\n", ne->swout[0], ne->swout[1], ne->swout[2], ne->swout[3] );
-        printf("----------------------------------\n");
+        if ( verbose )
+        {
+            char ips[50] = "";
+            sprintf(ips,"%d.%d.%d.%d", ne->ip[0], ne->ip[1], ne->ip[2], ne->ip[3]);
+            printf("--------- %d.%d.%d.%d -------------\n", ne->ip[0], ne->ip[1], ne->ip[2], ne->ip[3]);
+            printf("Short Name:   %s\n", ne->shortname);
+            printf("Long Name:    %s\n", ne->longname);
+            printf("Node Report:  %s\n", ne->nodereport);
+            
+            printf("Subnet:       0x%hhx\n", ne->sub);
+            printf("Numb Ports:   %d\n", ne->numbports);
+    //        printf("Input Addrs:  0x%hhx, 0x%hhx, 0x%hhx, 0x%hhx\n", ne->swin[0], ne->swin[1], ne->swin[2], ne->swin[3] );
+            printf("Output Addrs: 0x%hhx, 0x%hhx, 0x%hhx, 0x%hhx\n", ne->swout[0], ne->swout[1], ne->swout[2], ne->swout[3] );
+            printf("----------------------------------\n");
+        }
     }
 };
 
