@@ -21,15 +21,15 @@ void testApp::update(){
         float colorG = (sin((ofGetElapsedTimeMillis() / 1000.f) + PI / 3.f) / 2.f + 0.5f) * 255.f;
         float colorB = (sin((ofGetElapsedTimeMillis() / 1000.f)  + PI * 2.f / 3.f) / 2.f + 0.5f) * 255.f;
         ofSetColor((int)colorR, (int)colorG, (int)colorB);
-        ofRect(0, 0, 512, 1);
+        ofDrawRectangle(0, 0, 512, 1);
         fbo.end();
-        fbo.readToPixels(testImage.getPixelsRef());
+        fbo.readToPixels(testImage.getPixels());
     }
 
     //list nodes for sending
     //with subnet / universe
 //    artnet.sendDmx("10.0.0.149", 0xf, 0xf, testImage.getPixels(), 512);
-    artnet.sendDmx("10.0.0.149", testImage.getPixels(), 512);
+    artnet.sendDmx("10.0.0.149", testImage.getPixels().getData(), 512);
 }
 
 //--------------------------------------------------------------
