@@ -5,7 +5,7 @@
 
 **openframeworks** addon of artnet
 
-This addon is comletely different from old version which use libartnet.  
+This addon is comletely different from the old version which uses libartnet.  
 In case you still need the old version, please checkout the *legacy* branch.
 
 
