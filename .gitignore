@@ -9,3 +9,14 @@ example/.DS_Store
 */ipch/*
 */bin/*
 example/.vs/
+example/icon.rc
+example/example.vcxproj.user
+example/example.vcxproj.filters
+example/example.vcxproj
+example/example.sln
+addons/ofxNetwork/src/ofxUDPManager.obj
+addons/ofxNetwork/src/ofxTCPServer.obj
+addons/ofxNetwork/src/ofxTCPManager.obj
+addons/ofxNetwork/src/ofxTCPClient.obj
+addons/ofxNetwork/src/ofxNetworkUtils.obj
+addons/ofxArtnet/src/ofxArtnet.obj
