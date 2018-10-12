@@ -1,4 +1,4 @@
-#ofxArtnet
+# ofxArtnet
 
 [![Join the chat at https://gitter.im/hiroyuki/ofxArtnet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hiroyuki/ofxArtnet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -9,5 +9,5 @@ This addon is comletely different from old version which use libartnet.
 In case you still need the old version, please checkout the *legacy* branch.
 
 
-##dependency  
+## dependency  
 ofxNetwork
