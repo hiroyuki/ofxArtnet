@@ -11,7 +11,7 @@ void ofApp::update(){
 	sendData.begin();
 	ofClear(0);
 	ofColor color;
-	color.r = ofGetMouseY() / (float)ofGetHeight() * 255.0;
+	color.r = (ofNoise(ofGetElapsedTimef() + 0)* 0.5 + 0.5) * 255;
 	color.g = ofNoise(ofGetElapsedTimef()+3000)*255;
 	color.b = ofNoise(ofGetElapsedTimef()+1000)*255;
 	ofSetColor(color);
