@@ -26,7 +26,7 @@ void ofApp::draw(){
 		float value = data[i] / 255.0;
 		ofLine(i * 2, ofGetHeight() - (1 - value)*ofGetHeight(), i * 2, ofGetHeight());
 	}
-	ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(), 20, 20);
+	ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), 20, 20);
 }
 
 //--------------------------------------------------------------

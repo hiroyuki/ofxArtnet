@@ -16,5 +16,4 @@ class ofxArtnetProtocol
 		const string HEAD = "Art-Net";
 		const int HEADER_LENGTH = 18;
 		const short OP_OUTPUT = 0x5000;
-	};
-}
+};

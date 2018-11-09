@@ -4,6 +4,8 @@
 void ofApp::setup(){
 	sendData.allocate(170, 1, GL_RGB);
 	artnet.setup("127.0.0.1");
+	artnet.setThreadedSend(true);
+	artnet.start(40.0);
 }
 
 //--------------------------------------------------------------

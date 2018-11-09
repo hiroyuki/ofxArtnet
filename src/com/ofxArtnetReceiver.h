@@ -14,9 +14,9 @@ public:
 	int getDataSize();
 protected:
 	void threadedFunction();
+	std::condition_variable condition;
 	bool isDataNew = false;
 	int size;
 	char* receivedData;
-	std::condition_variable condition;
 };
 

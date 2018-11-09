@@ -14,7 +14,7 @@ ofxArtnetProtocol::~ofxArtnetProtocol()
 
 void ofxArtnetProtocol::allocateArtnetBuffer(vector<unsigned char>& buff, unsigned int size)
 {	
-	size = HEAD.length() + 7 + size;
+	size = HEADER_LENGTH + size;
 	buff.resize(size);
 }
 
@@ -32,8 +32,8 @@ void ofxArtnetProtocol::createProtocolHeader(vector<unsigned char>& buf)
 		buf[i] = HEAD[i];
 	}
 	buf[size] = 0;//end string
-	buf[size + 1] = OP_OUTPUT & 0xff);
-	buf[size + 2] = OP_OUTPUT >> 8);
+	buf[size + 1] = (OP_OUTPUT & 0xff);
+	buf[size + 2] = (OP_OUTPUT >> 8);
 
 	buf[size + 3] = 0;//protocol version high byte
 	buf[size + 4] = 14;//protocol version low byte

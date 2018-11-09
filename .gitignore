@@ -56,3 +56,11 @@ example_send/.vs/example_send/v15/ipch/AutoPCH/8a0b164b0fd2e2d7/OFXARTNETRECEIVE
 example_send/.vs/example_send/v15/ipch/AutoPCH/d17e363a9680b2dd/OFAPP.ipch
 addons/ofxArtnet/src/com/ofxArtnetReceiver.obj
 addons/ofxArtnet/src/com/ofxArtnetProtocol.obj
+*.sln
+*.rc
+*.user
+*.filters
+*.vcxproj
+example_send_threaded/.vs/
+example_send/.vs/
+example_recv/.vs/example_recv/v15/ipch/AutoPCH/acf32d9b3494ba6b/OFAPP.ipch
