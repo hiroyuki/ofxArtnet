@@ -7,16 +7,16 @@ public:
 	ofxArtnetReceiver();
 	~ofxArtnetReceiver();
 
-	void setup(int port = 6454);
+	void setup(const int universe = 0,const int port = 6454);
 
 	bool hasNextMessage() const;
 	void getData(unsigned char * data);
 	int getDataSize();
 protected:
 	void threadedFunction();
-	std::condition_variable condition;
 	bool isDataNew = false;
 	int size;
+	int universe;
 	char* receivedData;
 };
 

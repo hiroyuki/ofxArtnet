@@ -10,10 +10,12 @@ ofxArtnetSender::ofxArtnetSender()
 
 ofxArtnetSender::~ofxArtnetSender()
 {
-	std::unique_lock<std::mutex> lck(mutex);
-	stopThread();
-	condition.notify_all();
-	waitForThread(false);
+	if (isThreadRunning())
+	{
+		stopThread();
+		waitForThread(false);
+
+	}
 }
 
 void ofxArtnetSender::setup(const string ipAddress, const int universe, const short port)
@@ -28,10 +30,11 @@ void ofxArtnetSender::threadedFunction()
 {
 	while (isThreadRunning())
 	{
-		std::unique_lock<std::mutex> lock(mutex);
 		if (_data != NULL)
+		{
+			std::unique_lock<std::mutex> lock(mutex);
 			sendData((const unsigned char*)_data, _datasize);
-		condition.wait(lock);
+		}
 		ofSleepMillis(interval);
 	}
 }

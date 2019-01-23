@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	sendData.allocate(170, 1, GL_RGB);
-	artnet.setup("127.0.0.1");
+	artnet.setup("127.0.0.1",0);
 }
 
 //--------------------------------------------------------------
@@ -12,15 +12,14 @@ void ofApp::update(){
 	ofClear(0);
 	ofColor color;
 	color.r = (ofNoise(ofGetElapsedTimef() + 0)* 0.5 + 0.5) * 255;
-	color.g = ofNoise(ofGetElapsedTimef()+3000)*255;
-	color.b = ofNoise(ofGetElapsedTimef()+1000)*255;
+	color.g = ofNoise(ofGetElapsedTimef() + 3000) * 255;
+	color.b = ofNoise(ofGetElapsedTimef() + 1000) * 255;
 	ofSetColor(color);
 	ofDrawRectangle(0, 0, sendData.getWidth(), 1);
 	sendData.end();
 	ofPixels data;
 	sendData.readToPixels(data);
 	artnet.sendArtnet(data);
-	
 }
 
 //--------------------------------------------------------------

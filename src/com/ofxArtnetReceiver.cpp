@@ -4,24 +4,25 @@
 
 ofxArtnetReceiver::ofxArtnetReceiver()
 {
-
+	receivedData = NULL;
 }
 
 
 ofxArtnetReceiver::~ofxArtnetReceiver()
 {
-	std::unique_lock<std::mutex> lck(mutex);
-	stopThread();
-	condition.notify_all();
-	waitForThread(false);
+	if (isThreadRunning())
+	{
+		stopThread();
+		waitForThread(false);
+	}
 }
 
-void ofxArtnetReceiver::setup(int port)
+void ofxArtnetReceiver::setup(const int universe,const int port)
 {
 	ofxUDPSettings settings;
-	
+	this->universe = universe;
 	settings.receiveOn(port);
-	settings.blocking = true;
+	settings.blocking = false;
 	udp.Setup(settings);
 	startThread();
 
@@ -40,12 +41,8 @@ int ofxArtnetReceiver::getDataSize()
 
 void ofxArtnetReceiver::getData(unsigned char * data)
 {
-	if (isDataNew)
-	{
-		std::unique_lock<std::mutex> lock(mutex);
-		memcpy(data, receivedData, size);
-		condition.notify_all();
-	}
+	std::unique_lock<std::mutex> lock(mutex);
+	memcpy(data, receivedData, size);
 }
 
 
@@ -53,12 +50,6 @@ void ofxArtnetReceiver::threadedFunction()
 {
 	while (isThreadRunning())
 	{
-		std::unique_lock<std::mutex> lock(mutex);
-		if (isDataNew)//reset
-		{
-			isDataNew = false;
-			delete[] receivedData;
-		}
 		char *data = new char[HEADER_LENGTH+512];
 		udp.Receive(data, HEADER_LENGTH+512);
 		string protcol_id(data, 7);
@@ -66,10 +57,18 @@ void ofxArtnetReceiver::threadedFunction()
 		{
 			isDataNew = true;
 			size = (data[HEADER_LENGTH - 2] << 8) + (data[HEADER_LENGTH - 1] & 0xff);
-			receivedData = new char[size];
-			memcpy(receivedData, data + HEADER_LENGTH, size);
+			int dataUniverse = (data[HEADER_LENGTH - 4] & 0xff) + (data[HEADER_LENGTH - 3] << 8);
+			if (dataUniverse == universe)
+			{
+				std::unique_lock<std::mutex> lock(mutex);
+				if (receivedData != NULL)
+				{
+					delete[] receivedData;
+				}
+				receivedData = new char[size];
+				memcpy(receivedData, data + HEADER_LENGTH, size);
+			}
 		}
 		delete[] data;
-		condition.wait(lock);
 	}
 }

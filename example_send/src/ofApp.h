@@ -24,4 +24,5 @@ class ofApp : public ofBaseApp{
 		
 		ofFbo sendData;
 		ofxArtnetSender artnet;
+
 };
