@@ -64,3 +64,5 @@ addons/ofxArtnet/src/com/ofxArtnetProtocol.obj
 example_send_threaded/.vs/
 example_send/.vs/
 example_recv/.vs/example_recv/v15/ipch/AutoPCH/acf32d9b3494ba6b/OFAPP.ipch
+/example_recv/.vs/example_recv/v15/Solution.VC.db-shm
+/example_recv/.vs/example_recv/v15/Solution.VC.db-wal

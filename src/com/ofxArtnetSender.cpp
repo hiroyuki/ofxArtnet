@@ -7,6 +7,15 @@ ofxArtnetSender::ofxArtnetSender()
 	_data = NULL;
 }
 
+ofxArtnetSender::ofxArtnetSender(const ofxArtnetSender& origin)
+{
+	this->universe = origin.universe;
+	this->targetIp = origin.targetIp;
+	this->targetPort = origin.targetPort;
+	udp.Create();
+	udp.Connect(targetIp.c_str(), targetPort);
+}
+
 
 ofxArtnetSender::~ofxArtnetSender()
 {
@@ -16,11 +25,14 @@ ofxArtnetSender::~ofxArtnetSender()
 		waitForThread(false);
 
 	}
+	udp.Close();
 }
 
 void ofxArtnetSender::setup(const string ipAddress, const int universe, const short port)
 {
 	this->universe = universe;
+	this->targetIp = ipAddress;
+	this->targetPort = port;
 	udp.Create();
 	udp.Connect(ipAddress.c_str(), port);
 }

@@ -5,6 +5,8 @@ class ofxArtnetSender : public ofxArtnetProtocol, public ofThread
 {
 public:
 	ofxArtnetSender();
+	ofxArtnetSender(const ofxArtnetSender& origin);
+
 	~ofxArtnetSender();
 	void setup(const string ipAdress, const int universe=0, const short port = 6454);
 
@@ -32,6 +34,8 @@ protected:
 	bool bThreadEnabled = false;
 	void threadedFunction();
 
+	string targetIp;
+	short targetPort;
 	int universe;
 	unsigned char *_data;
 	int _datasize;
