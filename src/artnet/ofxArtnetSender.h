@@ -11,21 +11,17 @@ public:
 	~ofxArtnetSender();
 	void setup(const string ipAdress, const short port = 6454);
 
-	inline void setThreadedSend(const bool threaded)
+	inline void enableThread(const float fps)
 	{
-		bThreadEnabled = threaded;
-	}
-
-	void setFrameRate(const float fps)
-	{
+		bThreadEnabled = true;
 		framerate = fps;
 		interval = 1000.0 / framerate;
+		startThread();
 	}
 
-	void start(const float fps)
+	inline void disableThread()
 	{
-		setFrameRate(fps);
-		startThread();
+		bThreadEnabled = false;
 	}
 
 	void sendArtnet(const ofxArtnetMessage& message);
