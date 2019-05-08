@@ -20,7 +20,7 @@ void ofxArtnetProtocol::allocateArtnetBuffer(vector<unsigned char>& buff, unsign
 
 //ref protocols
 //https://art-net.org.uk/structure/streaming-packets/artdmx-packet-definition/
-void ofxArtnetProtocol::createProtocolHeader(vector<unsigned char>& buf)
+void ofxArtnetProtocol::createProtocolHeader(vector<unsigned char>& buf, unsigned char seq)
 {
 	if (buf.size() < HEAD.length() + 6)
 	{
@@ -33,12 +33,12 @@ void ofxArtnetProtocol::createProtocolHeader(vector<unsigned char>& buf)
 	}
 	buf[size] = 0;//end string
 	buf[size + 1] = (OP_OUTPUT & 0xff);
-	buf[size + 2] = (OP_OUTPUT >> 8);
+	buf[size + 2] = (OP_OUTPUT >> 8) & 0xff;
 
 	buf[size + 3] = 0;//protocol version high byte
 	buf[size + 4] = 14;//protocol version low byte
 
-	buf[size + 5] = 0;//sequence no - disable sequence(0)
+	buf[size + 5] = seq;//sequence no - disable sequence(0)
 
 	buf[size + 6] = 0;//The physical input port from which DMX512 - information only
 }

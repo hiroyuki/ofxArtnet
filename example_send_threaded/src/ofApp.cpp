@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	sendData.allocate(170, 1, GL_RGB);
+	ofSetFrameRate(40);
 	artnet.setup("127.0.0.1");
 	artnet.setThreadedSend(true);
 	artnet.start(40.0);
@@ -21,7 +22,9 @@ void ofApp::update(){
 	sendData.end();
 	ofPixels data;
 	sendData.readToPixels(data);
-	artnet.sendArtnet(data);
+	ofxArtnetMessage m(data);
+	m.setUniverse(3, 4, 4);
+	artnet.sendArtnet(m);
 	
 }
 
@@ -29,7 +32,7 @@ void ofApp::update(){
 void ofApp::draw(){
 	ofBackground(0);
 	ofSetColor(255);
-	ofScale(1, 10);
+	ofScale(ofGetWidth() / sendData.getWidth(), ofGetHeight() / sendData.getHeight());
 	sendData.draw(0, 0);
 
 }

@@ -9,7 +9,7 @@ class ofxArtnetProtocol
 		~ofxArtnetProtocol();
 
 		void allocateArtnetBuffer(vector<unsigned char>& buff, unsigned int size);
-		void createProtocolHeader(vector<unsigned char>& buff);
+		void createProtocolHeader(vector<unsigned char>& buff, unsigned char seq = 0);
 
 	protected:
 		ofxUDPManager udp;

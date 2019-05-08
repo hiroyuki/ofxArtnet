@@ -8,23 +8,28 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	if (receiver.hasNextMessage())
+	if (receiver.hasMessage())
 	{
-		dataSize = receiver.getDataSize();
-		data = new unsigned char[dataSize];
-		receiver.getData(data);
+		ofxArtnetMessage m;
+		receiver.getData(m);
+		dataSize = m.getSize();
+		data = new unsigned char[m.getSize()];
+		m.readTo(data);
 	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofBackground(0);
-	ofSetColor(ofColor::lightGreen);
 	for (int i = 0; i < dataSize; i++)
 	{
-		//cout << i << " ";
+		ofPushStyle();
+		if(i%3==0) ofSetColor(ofColor::red);
+		else if (i % 3 == 1) ofSetColor(ofColor::green);
+		else if (i % 3 == 2) ofSetColor(ofColor::blue);
 		float value = data[i] / 255.0;
-		ofLine(i * 2, ofGetHeight() - (1 - value)*ofGetHeight(), i * 2, ofGetHeight());
+		ofDrawRectangle(i * 6, ofGetHeight() - value*ofGetHeight(), 2, value*ofGetHeight());
+		ofPopStyle();
 	}
 	ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), 20, 20);
 }
