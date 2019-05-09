@@ -8,12 +8,12 @@ class ofxArtnetProtocol
 		ofxArtnetProtocol();
 		~ofxArtnetProtocol();
 
-		void allocateArtnetBuffer(vector<unsigned char>& buff, unsigned int size);
-		void createProtocolHeader(vector<unsigned char>& buff, unsigned char seq = 0);
+		void allocateArtnetBuffer(std::vector<unsigned char>& buff, unsigned int size);
+		void createProtocolHeader(std::vector<unsigned char>& buff, unsigned char seq = 0);
 
 	protected:
 		ofxUDPManager udp;
-		const string HEAD = "Art-Net";
+		const std::string HEAD = "Art-Net";
 		const int HEADER_LENGTH = 18;
 		const short OP_OUTPUT = 0x5000;
 };

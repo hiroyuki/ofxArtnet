@@ -9,7 +9,7 @@ public:
 	ofxArtnetSender(const ofxArtnetSender& origin);
 
 	~ofxArtnetSender();
-	void setup(const string ipAdress, const short port = 6454);
+    void setup(const std::string& ipAdress, const std::uint16_t port = 6454);
 
 	inline void enableThread(const float fps)
 	{
@@ -30,13 +30,13 @@ protected:
 	bool bThreadEnabled = false;
 	void threadedFunction();
 
-	string targetIp;
+	std::string targetIp;
 	short targetPort;
 	float framerate = 40;
 	float interval = 25;
 
 	ofxArtnetMessage _message;
-	void createBuffer(const ofxArtnetMessage& message, vector<unsigned char>& data);
+	void createBuffer(const ofxArtnetMessage& message, std::vector<unsigned char>& data);
 	void sendData(const ofxArtnetMessage& message);
 };
 

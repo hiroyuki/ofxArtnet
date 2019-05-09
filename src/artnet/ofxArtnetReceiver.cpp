@@ -14,7 +14,7 @@ ofxArtnetReceiver::~ofxArtnetReceiver()
 	}
 }
 
-void ofxArtnetReceiver::setup(const int port)
+void ofxArtnetReceiver::setup(const uint16_t port)
 {
 	ofxUDPSettings settings;
 	settings.receiveOn(port);
@@ -42,7 +42,7 @@ void ofxArtnetReceiver::threadedFunction()
 	{
 		char *data = new char[HEADER_LENGTH + 512];
 		udp.Receive(data, HEADER_LENGTH + 512);
-		string protcol_id(data, 7);
+		std::string protcol_id(data, 7);
 		if (protcol_id == "Art-Net")
 		{
 			if (data[8] == (OP_OUTPUT & 0xff) && data[9] == ((OP_OUTPUT >> 8) & 0xff))
