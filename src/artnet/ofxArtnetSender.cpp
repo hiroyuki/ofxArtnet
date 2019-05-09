@@ -24,7 +24,7 @@ ofxArtnetSender::~ofxArtnetSender()
 
 }
 
-void ofxArtnetSender::setup(const string ipAddress, const short port)
+void ofxArtnetSender::setup(const std::string& ipAddress, const uint16_t port)
 {
 	this->targetIp = ipAddress;
 	this->targetPort = port;
@@ -61,7 +61,7 @@ void ofxArtnetSender::sendArtnet(const ofxArtnetMessage& message)
 	}
 }
 
-void ofxArtnetSender::createBuffer(const ofxArtnetMessage& message, vector<unsigned char>& data)
+void ofxArtnetSender::createBuffer(const ofxArtnetMessage& message, std::vector<unsigned char>& data)
 {
 	int datasize = message.getSize();
 	allocateArtnetBuffer(data, datasize);
@@ -81,7 +81,7 @@ void ofxArtnetSender::sendData(const ofxArtnetMessage& message)
 	int datasize = message.getSize();
 	if (datasize > 0)
 	{
-		vector<unsigned char> artnetBuff;
+		std::vector<unsigned char> artnetBuff;
 		createBuffer(message, artnetBuff);
 		udp.Send((const char *)artnetBuff.data(), artnetBuff.size());
 	}

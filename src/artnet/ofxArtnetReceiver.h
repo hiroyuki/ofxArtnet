@@ -7,7 +7,7 @@ public:
 	ofxArtnetReceiver();
 	~ofxArtnetReceiver();
 
-	void setup(const int port = 6454);
+	void setup(const uint16_t port = 6454);
 
 	bool hasMessage() const;
 	void getData(ofxArtnetMessage& m);

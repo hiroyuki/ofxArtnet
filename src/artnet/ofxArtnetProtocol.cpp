@@ -12,7 +12,7 @@ ofxArtnetProtocol::~ofxArtnetProtocol()
 }
 
 
-void ofxArtnetProtocol::allocateArtnetBuffer(vector<unsigned char>& buff, unsigned int size)
+void ofxArtnetProtocol::allocateArtnetBuffer(std::vector<unsigned char>& buff, unsigned int size)
 {	
 	size = HEADER_LENGTH + size;
 	buff.resize(size);
@@ -20,7 +20,7 @@ void ofxArtnetProtocol::allocateArtnetBuffer(vector<unsigned char>& buff, unsign
 
 //ref protocols
 //https://art-net.org.uk/structure/streaming-packets/artdmx-packet-definition/
-void ofxArtnetProtocol::createProtocolHeader(vector<unsigned char>& buf, unsigned char seq)
+void ofxArtnetProtocol::createProtocolHeader(std::vector<unsigned char>& buf, unsigned char seq)
 {
 	if (buf.size() < HEAD.length() + 6)
 	{
