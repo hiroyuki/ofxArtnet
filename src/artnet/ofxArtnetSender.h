@@ -35,7 +35,7 @@ protected:
 	float framerate = 40;
 	float interval = 25;
 
-	vector<ofxArtnetMessage> _messages;
+    std::vector<ofxArtnetMessage> _messages;
 	void createBuffer(const ofxArtnetMessage& message, std::vector<unsigned char>& data);
 	void sendData(const ofxArtnetMessage& message);
 };
