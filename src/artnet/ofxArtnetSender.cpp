@@ -20,7 +20,7 @@ ofxArtnetSender::~ofxArtnetSender()
 		waitForThread(true);
 	}
 	udp.Close();
-	_message.clear();
+	_messages.clear();
 
 }
 
@@ -39,7 +39,8 @@ void ofxArtnetSender::threadedFunction()
 	{
 		ofSleepMillis(interval);
 		std::unique_lock<std::mutex> lock(mutex);
-		sendData(_message);
+		for(auto& m : _messages) sendData(m);
+		_messages.clear();
 	}
 }
 
@@ -52,7 +53,7 @@ void ofxArtnetSender::sendArtnet(const ofxArtnetMessage& message)
 	if (bThreadEnabled)
 	{
 		std::unique_lock<std::mutex> lock(mutex);
-		_message = message;
+		_messages.push_back( message );
 	}
 	else
 	{
@@ -73,7 +74,6 @@ void ofxArtnetSender::createBuffer(const ofxArtnetMessage& message, std::vector<
 	//datasize
 	data[HEADER_LENGTH - 2] = (datasize >> 8);
 	data[HEADER_LENGTH - 1] = (datasize & 0xff);
-	ofLog() << datasize;
 	memcpy(&data[HEADER_LENGTH], message._data.data(), message.getSize());
 }
 
