@@ -39,5 +39,6 @@ private:
 	unsigned char* _data;
 	unsigned int _portAddress;
 	unsigned char _seqNo;
+    std::mutex mutex;
 };
 
