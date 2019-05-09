@@ -11,10 +11,12 @@ public:
 
 	bool hasMessage() const;
 	void getData(ofxArtnetMessage& m);
+    void getNextData(ofxArtnetMessage& m);
 protected:
 	void threadedFunction();
 	bool isDataNew = false;
 	int size;
-	ofxArtnetMessage receivedData;
+    ofThreadChannel<ofxArtnetMessage> receivedDataChannel;
+    ofxArtnetMessage receivedData;
 };
 

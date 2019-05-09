@@ -14,6 +14,6 @@ class ofxArtnetProtocol
 	protected:
 		ofxUDPManager udp;
 		const std::string HEAD = "Art-Net";
-		const int HEADER_LENGTH = 18;
-		const short OP_OUTPUT = 0x5000;
+		static constexpr int HEADER_LENGTH = 18;
+		static constexpr short OP_OUTPUT = 0x5000;
 };

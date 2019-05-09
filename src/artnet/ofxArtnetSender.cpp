@@ -74,7 +74,7 @@ void ofxArtnetSender::createBuffer(const ofxArtnetMessage& message, std::vector<
 	data[HEADER_LENGTH - 2] = (datasize >> 8);
 	data[HEADER_LENGTH - 1] = (datasize & 0xff);
 	ofLog() << datasize;
-	memcpy(&data[HEADER_LENGTH], message._data, message.getSize());
+	memcpy(&data[HEADER_LENGTH], message._data.data(), message.getSize());
 }
 
 void ofxArtnetSender::sendData(const ofxArtnetMessage& message)
