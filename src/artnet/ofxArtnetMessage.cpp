@@ -1,6 +1,6 @@
 #include "ofxArtnetMessage.h"
 
-ofxArtnetMessage::ofxArtnetMessage() : _data()
+ofxArtnetMessage::ofxArtnetMessage() : _data(), _universe(0), _subnet(0), _net(0), _portAddress(0)
 {
 }
 
