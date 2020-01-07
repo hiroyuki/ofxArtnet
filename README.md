@@ -50,6 +50,10 @@ sendData.readToPixels(data);
 artnet.sendArtnet(data);
 ```
 
+## Documentation
+
+[See Wiki for Documentation](https://github.com/tothemun/ofxArtnet/wiki)
+
 ## Examples
 
 * [Send Data over ArtNet](./examples/example_send)
