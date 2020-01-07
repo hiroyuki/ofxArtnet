@@ -52,9 +52,9 @@ artnet.sendArtnet(data);
 
 ## Examples
 
-* [Send Data over ArtNet](./example_send)
-* [Send Threaded Data Over ArtNet](./example_send_threaded)
-* [Recieve Data from ArtNet](./example_recv)
+* [Send Data over ArtNet](./examples/example_send)
+* [Send Threaded Data Over ArtNet](./examples/example_send_threaded)
+* [Recieve Data from ArtNet](./examples/example_recv)
 
 ## Dependencies
 [ofxNetwork](https://openframeworks.cc/documentation/ofxNetwork/)
