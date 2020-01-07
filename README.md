@@ -3,14 +3,17 @@
 [![Join the chat at https://gitter.im/hiroyuki/ofxArtnet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hiroyuki/ofxArtnet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
-**openframeworks** addon of artnet
+**openframeworks** addon for artnet
 
-This addon is comletely different from the old version which uses libartnet.  
-In case you still need the old version, please checkout the *legacy* branch.
+*Note: This addon is seperate from the old version which uses libartnet.  
+In case you still need the old version, please checkout the **legacy** branch.*
 
 ## Overview
 
-ofxArtnet works by sending ofPixels through to ArtNet to fixtures.
+ofxArtnet allows the sending and recieving of [Art-Net](https://art-net.org.uk/) data within OpenFrameworks.
+
+## Basic Usage
+Sending simple data over ArtNet.
 
 ### Initialize an FBO and ArtNet Sender
 ```C++
@@ -46,6 +49,12 @@ sendData.readToPixels(data);
 // Send the pixel data over Artnet
 artnet.sendArtnet(data);
 ```
+
+## Examples
+
+* [Send Data over ArtNet](./example_send)
+* [Send Threaded Data Over ArtNet](./example_send_threaded)
+* [Recieve Data from ArtNet](./example_recv)
 
 ## Dependencies
 [ofxNetwork](https://openframeworks.cc/documentation/ofxNetwork/)
