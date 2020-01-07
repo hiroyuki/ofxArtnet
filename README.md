@@ -48,4 +48,4 @@ artnet.sendArtnet(data);
 ```
 
 ## Dependencies
-ofxNetwork
+[ofxNetwork](https://openframeworks.cc/documentation/ofxNetwork/)
