@@ -35,7 +35,6 @@ artnet.setup(targetIP);
 
 ### Draw to the frame buffer and send to artnet
 ```C++
-ofColor = 
 sendData.begin();
   ofClear(0);
   ofSetColor(color);
