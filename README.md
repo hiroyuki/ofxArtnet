@@ -9,6 +9,7 @@
 In case you still need the old version, please checkout the **legacy** branch.*
 
 ## Overview
+<img src="https://art-net.org.uk/wp-content/uploads/2016/09/Art-Net-banner-e1474475270322.png">
 
 ofxArtnet allows the sending and recieving of [Art-Net](https://art-net.org.uk/) data within OpenFrameworks.
 

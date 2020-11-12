@@ -68,8 +68,8 @@ void ofxArtnetSender::createBuffer(const ofxArtnetMessage& message, std::vector<
 	allocateArtnetBuffer(data, datasize);
 	createProtocolHeader(data, message.getSequence());
 	//universe
-	data[HEADER_LENGTH - 4] = (message.getPortAddess() & 0xff);
-	data[HEADER_LENGTH - 3] = (message.getPortAddess() >> 8);
+	data[HEADER_LENGTH - 4] = (message.getPortAddress() & 0xff);
+	data[HEADER_LENGTH - 3] = (message.getPortAddress() >> 8);
 
 	//datasize
 	data[HEADER_LENGTH - 2] = (datasize >> 8);
