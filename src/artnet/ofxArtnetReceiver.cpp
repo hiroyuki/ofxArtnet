@@ -66,7 +66,7 @@ void ofxArtnetReceiver::threadedFunction()
 				int versionLo = data[HEADER_LENGTH-7];
 				int seq = data[HEADER_LENGTH-6];
 				int physical = data[HEADER_LENGTH-5];
-				receivedData._portAddress = data[HEADER_LENGTH-4] + (data[HEADER_LENGTH-3] << 8);
+				receivedData.setPortAddress(data[HEADER_LENGTH-4] + (data[HEADER_LENGTH-3] << 8));
 				int dataSize = (data[HEADER_LENGTH - 2] << 8) + (data[HEADER_LENGTH - 1] & 0xff);
                 receivedData.setData(data + HEADER_LENGTH, dataSize);
 				receivedDataChannel.send(receivedData);
