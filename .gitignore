@@ -61,4 +61,4 @@ addons/ofxArtnet/src/com/ofxArtnetProtocol.obj
 *.user
 *.filters
 *.vcxproj
-*/.vs/*
+.vs
