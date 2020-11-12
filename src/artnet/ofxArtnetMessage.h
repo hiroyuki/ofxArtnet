@@ -37,7 +37,7 @@ public:
 	inline unsigned int getSize() const { return _data.size(); }
 	ofxArtnetMessage& operator = (const ofxArtnetMessage& obj);
 private:
-	inline unsigned int getPortAddess() const { return _portAddress; }
+	inline unsigned int getPortAddress() const { return _portAddress; }
 	inline unsigned char getSequence() const { return _seqNo; }
 	unsigned int _universe, _subnet, _net;
     std::vector<uint8_t> _data;
