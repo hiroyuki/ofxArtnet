@@ -14,3 +14,17 @@ example/.DS_Store
 *.vcxproj
 .vs
 obj
+examples/example_send/bin/example_send.exe
+examples/example_send/bin/example_send.exp
+examples/example_send/bin/example_send.lib
+examples/example_send/bin/fmodex64.dll
+examples/example_send/bin/fmodexL64.dll
+examples/example_send/bin/FreeImage.dll
+examples/example_recv/bin/example_recv_debug.exe
+examples/example_recv/bin/example_recv_debug.exp
+examples/example_recv/bin/example_recv_debug.ilk
+examples/example_recv/bin/example_recv_debug.lib
+examples/example_recv/bin/example_recv_debug.pdb
+examples/example_recv/bin/fmodex64.dll
+examples/example_recv/bin/fmodexL64.dll
+examples/example_recv/bin/FreeImage.dll
