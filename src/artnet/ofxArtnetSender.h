@@ -23,6 +23,13 @@ public:
 	{
 		bThreadEnabled = false;
 	}
+	
+	inline void setFps(const float fps) {
+		if (bThreadEnabled) {
+			framerate = fps;
+			interval = 1000.0 / framerate;
+		}
+	}
 
 	void sendArtnet(const ofxArtnetMessage& message);
 	
