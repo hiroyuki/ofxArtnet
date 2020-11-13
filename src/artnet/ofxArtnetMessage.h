@@ -41,7 +41,7 @@ private:
 	{
 		_net = ( portAddress & 0b0111111100000000 )>> 8;
 		_subnet = (portAddress & 0b000000011110000) >> 4;
-		_universe = (portAddress & 0b000000000001111);
+		_universe = portAddress;
 		_portAddress = portAddress;
 	}
 
