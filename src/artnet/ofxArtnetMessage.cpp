@@ -75,7 +75,7 @@ void ofxArtnetMessage::setData(std::vector<uint8_t> &data) {
 void ofxArtnetMessage::setData(ofIndexType index, unsigned char data)
 {
 	if (getSize() <= index) {
-		ofLogWarning() << "data size is not big enouth";
+		ofLogWarning() << "data size is not big enough";
 		return;
 	}
 	_data[index] = data;
