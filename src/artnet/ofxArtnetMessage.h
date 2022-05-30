@@ -50,6 +50,6 @@ private:
 	unsigned int _universe, _subnet, _net;
     std::vector<uint8_t> _data;
 	unsigned int _portAddress;
-	unsigned char _seqNo;
+	unsigned char _seqNo = 0;
 };
 
